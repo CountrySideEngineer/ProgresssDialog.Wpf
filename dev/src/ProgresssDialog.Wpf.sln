@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36121.58 d17.14
+VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgresssDialog.Wpf", "ProgresssDialog.Wpf\ProgresssDialog.Wpf.csproj", "{C5349138-BC50-48CC-A3E9-AE01F5086BC0}"
 EndProject
