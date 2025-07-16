@@ -41,10 +41,20 @@ namespace ProgresssDialog.Wpf.ViewModel
             }
         }
 
+        protected int _progress = 0;
+
         /// <summary>
         /// Gets the progress percentage (0-100). Returns 0 if denominator is 0.
         /// </summary>
-        public int Progress => (0 != _denominator) ? ((_numerator * 100) / _denominator) : 0;
+        public int Progress
+        {
+            get => _progress;
+            set
+            {
+                _progress = value;
+                RaisePropertyChange();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the current progress value (numerator).
@@ -72,6 +82,19 @@ namespace ProgresssDialog.Wpf.ViewModel
                 RaisePropertyChange();
                 RaisePropertyChange(nameof(Progress));
             }
+        }
+
+        protected virtual void UpdateProgress()
+        {
+            if (0 == Denominator)
+            {
+                Progress = (Numerator * 100) / Denominator;
+            }
+            else
+            {
+                Progress = 0;
+            }
+
         }
 
         /// <summary>
