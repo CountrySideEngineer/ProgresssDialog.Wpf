@@ -37,6 +37,11 @@ namespace ProgresssDialog.Wpf.Model
         public bool ShouldContinue { get; set; } = true;
 
         /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public ProgressInfo() { }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ProgressInfo"/> class by copying values from another instance.
         /// </summary>
         /// <param name="other">The <see cref="ProgressInfo"/> instance to copy from.</param>
