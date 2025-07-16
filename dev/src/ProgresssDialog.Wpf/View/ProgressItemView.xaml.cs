@@ -18,9 +18,9 @@ namespace ProgresssDialog.Wpf.View
     /// <summary>
     /// ProgressView.xaml の相互作用ロジック
     /// </summary>
-    public partial class ProgressView : UserControl
+    public partial class ProgressItemView : UserControl
     {
-        public ProgressView()
+        public ProgressItemView()
         {
             InitializeComponent();
         }
