@@ -31,7 +31,7 @@
             <ProgressBar Grid.Row="0"
                          Grid.Column="0"
                          Margin="16, 8"
-                         Value="{Binding Progress, UpdateSourceTrigger=PropertyChanged}"
+                         Value="{Binding Progress}"
                          />
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
@@ -39,7 +39,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Stretch"
                        TextAlignment="Center"
-                       Text="{Binding Progress, UpdateSourceTrigger=PropertyChanged}"
+                       Text="{Binding Progress}"
                        />
         </Grid>
     </Grid>
