@@ -1,4 +1,6 @@
-﻿using ProgresssDialog.Wpf.Model.Args;
+﻿using ProgresssDialog.Wpf.Model;
+using ProgresssDialog.Wpf.Model.Args;
+using ProgresssDialog.Wpf.Task;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,10 @@ namespace ProgresssDialog.Wpf.ViewModel
         }
 
         protected int _progress = 0;
+
+        public IProgress<ProgressInfo>? ProgressReporter { get; set; }
+
+        public IAsyncTask<ProgressInfo>? AsyncTask { get; set; }
 
         /// <summary>
         /// Gets the progress percentage (0-100). Returns 0 if denominator is 0.
@@ -107,6 +113,25 @@ namespace ProgresssDialog.Wpf.ViewModel
             ProcessName = e.ProgressInfo.ProcessName;
             Denominator = e.ProgressInfo.Denominator;
             Numerator = e.ProgressInfo.Numerator;
+        }
+
+        /// <summary>
+        /// Handles the event that requests the start of the progress operation.
+        /// This method checks if the <see cref="ProgressReporter"/> is set and then starts the asynchronous task
+        /// by passing the progress reporter to <see cref="AsyncTask"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if <see cref="ProgressReporter"/> is not set.
+        /// </exception>
+        public virtual void OnProgressRequested(object sender, EventArgs e)
+        {
+            if (null == ProgressReporter)
+            {
+                throw new InvalidOperationException(nameof(ProgressReporter));
+            }
+            AsyncTask?.RunAsync(ProgressReporter);
         }
     }
 }

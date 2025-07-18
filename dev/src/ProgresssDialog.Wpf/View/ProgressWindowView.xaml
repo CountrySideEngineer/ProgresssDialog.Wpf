@@ -10,6 +10,7 @@
         WindowStartupLocation="CenterScreen"
         Height="450" Width="800">
     <Grid>
+        <local:ProgressItemView></local:ProgressItemView>
         
     </Grid>
 </Window>
