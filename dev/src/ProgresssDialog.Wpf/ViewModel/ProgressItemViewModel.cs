@@ -90,6 +90,11 @@ namespace ProgresssDialog.Wpf.ViewModel
             }
         }
 
+        /// <summary>
+        /// Updates the <see cref="Progress"/> property based on the current values of <see cref="Numerator"/> and <see cref="Denominator"/>.
+        /// If the denominator is zero, sets the progress to 0 to avoid division by zero.
+        /// Otherwise, calculates the progress percentage as (Numerator * 100) / Denominator.
+        /// </summary>
         protected virtual void UpdateProgress()
         {
             if (0 == Denominator)
