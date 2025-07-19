@@ -15,6 +15,9 @@ namespace ProgresssDialog.Wpf.ViewModel
     /// </summary>
     internal class ProgressItemViewModel : ViewModelBase
     {
+        public delegate void ProcessFinishedEvent(object sender, EventArgs e);
+        public event ProcessFinishedEvent? ProcessFinished;
+
         /// <summary>
         /// Backing field for the process name.
         /// </summary>
@@ -137,6 +140,11 @@ namespace ProgresssDialog.Wpf.ViewModel
                 throw new InvalidOperationException(nameof(ProgressReporter));
             }
             AsyncTask?.RunAsync(ProgressReporter);
+        }
+
+        public virtual void OnProgressFinished(object sender, EventArgs e)
+        {
+            ProcessFinished?.Invoke(this, e);
         }
     }
 }
