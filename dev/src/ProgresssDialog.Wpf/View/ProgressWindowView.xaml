@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProgresssDialog.Wpf.View"
+        xmlns:vm="clr-namespace:ProgresssDialog.Wpf.ViewModel"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="ProgressDialogView" 
@@ -11,8 +12,10 @@
         ContentRendered="Window_ContentRendered"
         WindowStartupLocation="CenterScreen"
         Height="450" Width="800">
+    <Window.DataContext>
+        <vm:ProgressWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        <local:ProgressItemView></local:ProgressItemView>
-        
+        <local:ProgressItemView DataContext="{Binding ItemContext, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>
