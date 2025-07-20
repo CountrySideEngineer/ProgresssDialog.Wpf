@@ -74,8 +74,10 @@ namespace ProgresssDialog.Wpf.ViewModel
             set
             {
                 _numerator = value;
+
                 RaisePropertyChange();
-                RaisePropertyChange(nameof(Progress));
+
+                UpdateProgress();
             }
         }
 
@@ -88,8 +90,10 @@ namespace ProgresssDialog.Wpf.ViewModel
             set
             {
                 _denominator = 0 == value ? 0 : value;
+
                 RaisePropertyChange();
-                RaisePropertyChange(nameof(Progress));
+
+                UpdateProgress();
             }
         }
 
@@ -100,7 +104,7 @@ namespace ProgresssDialog.Wpf.ViewModel
         /// </summary>
         protected virtual void UpdateProgress()
         {
-            if (0 == Denominator)
+            if (0 != Denominator)
             {
                 Progress = (Numerator * 100) / Denominator;
             }
