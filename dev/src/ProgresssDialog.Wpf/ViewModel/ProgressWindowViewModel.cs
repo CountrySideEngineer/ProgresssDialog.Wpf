@@ -85,7 +85,7 @@ namespace ProgresssDialog.Wpf.ViewModel
 
         public virtual void ProgressItemProcessDone(object sender, EventArgs e)
         {
-
+            OnRequestClose();
         }
     }
 }
