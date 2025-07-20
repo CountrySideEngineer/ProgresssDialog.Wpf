@@ -48,10 +48,7 @@ namespace ProgresssDialog.Wpf.Model
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
         public ProgressInfo(ProgressInfo other)
         {
-            if (null == other)
-        {
-            throw new ArgumentNullException(nameof(other));
-        }
+            ArgumentNullException.ThrowIfNull(other);
 
             ProcessName = other.ProcessName;
             Numerator = other.Numerator;
