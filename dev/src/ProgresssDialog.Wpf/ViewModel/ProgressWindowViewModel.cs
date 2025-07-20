@@ -83,6 +83,12 @@ namespace ProgresssDialog.Wpf.ViewModel
             CloseRequested?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Handles the event indicating that the progress item process has completed.
+        /// Invokes the <see cref="OnRequestClose"/> method to request closing the progress window.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         public virtual void ProgressItemProcessDone(object sender, EventArgs e)
         {
             OnRequestClose();

@@ -15,7 +15,17 @@ namespace ProgresssDialog.Wpf.ViewModel
     /// </summary>
     internal class ProgressItemViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Represents the delegate for the <see cref="ProcessFinished"/> event, which is raised when the process operation has completed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         public delegate void ProcessFinishedEvent(object sender, EventArgs e);
+
+        /// <summary>
+        /// Occurs when the process operation has finished.
+        /// Subscribers can handle this event to perform actions after the process is complete.
+        /// </summary>
         public event ProcessFinishedEvent? ProcessFinished;
 
         /// <summary>
@@ -46,10 +56,19 @@ namespace ProgresssDialog.Wpf.ViewModel
             }
         }
 
+        /// <summary>
+        /// Backing field for the <see cref="Progress"/> property, representing the current progress percentage (0-100).
+        /// </summary>
         protected int _progress = 0;
 
+        /// <summary>
+        /// Gets or sets the progress reporter used to report progress updates to the UI or other components.
+        /// </summary>
         public IProgress<ProgressInfo>? ProgressReporter { get; set; }
 
+        /// <summary>
+        /// Gets or sets the asynchronous task that performs the process and reports progress using <see cref="ProgressReporter"/>.
+        /// </summary>
         public IAsyncTask<ProgressInfo>? AsyncTask { get; set; }
 
         /// <summary>
@@ -146,6 +165,12 @@ namespace ProgresssDialog.Wpf.ViewModel
             AsyncTask?.RunAsync(ProgressReporter);
         }
 
+        /// <summary>
+        /// Handles the event indicating that the progress operation has finished.
+        /// Raises the <see cref="ProcessFinished"/> event to notify subscribers that the process is complete.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         public virtual void OnProgressFinished(object sender, EventArgs e)
         {
             ProcessFinished?.Invoke(this, e);
