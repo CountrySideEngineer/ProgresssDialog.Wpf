@@ -13,6 +13,8 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Version>0.1.1</Version>
+    <Authors>CountrySideEngineer</Authors>
+    <Company>CountrySideEngineer</Company>
   </PropertyGroup>
 
   <ItemGroup>
