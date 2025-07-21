@@ -120,4 +120,7 @@
   <data name="IDS_ERR_MSG_ACTION_NOT_SET" xml:space="preserve">
     <value>処理がセットされていません。</value>
   </data>
+  <data name="IDS_ERR_MSB_TASK_CANCELED" xml:space="preserve">
+    <value>キャンセルされました。</value>
+  </data>
 </root>
