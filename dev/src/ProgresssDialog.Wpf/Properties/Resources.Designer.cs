@@ -61,6 +61,15 @@ namespace ProgresssDialog.Wpf.Properties {
         }
         
         /// <summary>
+        ///   キャンセルされました。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IDS_ERR_MSB_TASK_CANCELED {
+            get {
+                return ResourceManager.GetString("IDS_ERR_MSB_TASK_CANCELED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   処理がセットされていません。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string IDS_ERR_MSG_ACTION_NOT_SET {
