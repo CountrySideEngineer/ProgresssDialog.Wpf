@@ -162,7 +162,26 @@ namespace ProgresssDialog.Wpf.ViewModel
             {
                 throw new InvalidOperationException(nameof(ProgressReporter));
             }
-            AsyncTask?.RunAsync(ProgressReporter);
+
+            try
+            {
+                var cancelTokenSource = new CancellationTokenSource();
+                AsyncTask?.RunAsync(ProgressReporter, cancelTokenSource.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                var cancelMsg = Properties.Resources.IDS_ERR_MSB_TASK_CANCELED;
+                var cancelEventArg = new ProgressChangedEventArg()
+                {
+                    ProgressInfo = new()
+                    {
+                        ProcessName = cancelMsg,
+                        Denominator = Denominator,
+                        Numerator = Numerator
+                    }
+                };
+                OnProgressChanged(this, cancelEventArg);
+            }
         }
 
         /// <summary>

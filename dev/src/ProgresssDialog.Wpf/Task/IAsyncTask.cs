@@ -4,6 +4,6 @@ namespace ProgresssDialog.Wpf.Task
 {
     public interface IAsyncTask<T>
     {
-        SystemTask RunAsync(IProgress<T> progress);
+        SystemTask RunAsync(IProgress<T> progress, CancellationToken? cancelToke = null);
     }
 }
