@@ -89,7 +89,7 @@ namespace ProgresssDialog.Wpf.ViewModel
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        public virtual void ProgressItemProcessDone(object sender, EventArgs e)
+        public virtual void ProgressItemProcessDone(object? sender, EventArgs e)
         {
             OnRequestClose();
         }

@@ -2,14 +2,6 @@
 using ProgresssDialog.Wpf.Model;
 using ProgresssDialog.Wpf.Model.Args;
 using ProgresssDialog.Wpf.Task;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProgresssDialog.Wpf.ViewModel
 {
@@ -18,7 +10,16 @@ namespace ProgresssDialog.Wpf.ViewModel
     /// </summary>
     internal class ProgressItemViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Backing field for the <see cref="ProcessCancelCommand"/> property.
+        /// Holds the command instance that executes the process cancellation logic.
+        /// </summary>
         protected DelegateCommand? _processCancelCommand = null;
+
+        /// <summary>
+        /// Gets the command that executes the process cancellation logic.
+        /// This command can be bound to a Cancel button in the UI to allow users to cancel the ongoing process.
+        /// </summary>
         public DelegateCommand ProcessCancelCommand
         {
             get
@@ -32,17 +33,10 @@ namespace ProgresssDialog.Wpf.ViewModel
         }
 
         /// <summary>
-        /// Represents the delegate for the <see cref="ProcessFinished"/> event, which is raised when the process operation has completed.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The event data.</param>
-        public delegate void ProcessFinishedEvent(object sender, EventArgs e);
-
-        /// <summary>
         /// Occurs when the process operation has finished.
         /// Subscribers can handle this event to perform actions after the process is complete.
         /// </summary>
-        public event ProcessFinishedEvent? ProcessFinished;
+        public event EventHandler? ProcessFinished;
 
         /// <summary>
         /// Backing field for the process name.
@@ -198,6 +192,10 @@ namespace ProgresssDialog.Wpf.ViewModel
             ProcessFinished?.Invoke(this, e);
         }
 
+        /// <summary>
+        /// Executes the cancellation logic for the process.
+        /// Cancels the ongoing asynchronous operation by signaling the <see cref="_cancellationTokenSource"/>.
+        /// </summary>
         public void ProcessCancelCommandExecute()
         {
             _cancellationTokenSource?.Cancel();
