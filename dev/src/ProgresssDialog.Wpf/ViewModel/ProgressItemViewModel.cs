@@ -1,8 +1,11 @@
-﻿using ProgresssDialog.Wpf.Model;
+﻿using ProgresssDialog.Wpf.Command;
+using ProgresssDialog.Wpf.Model;
 using ProgresssDialog.Wpf.Model.Args;
 using ProgresssDialog.Wpf.Task;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,6 +18,19 @@ namespace ProgresssDialog.Wpf.ViewModel
     /// </summary>
     internal class ProgressItemViewModel : ViewModelBase
     {
+        protected DelegateCommand? _processCancelCommand = null;
+        public DelegateCommand ProcessCancelCommand
+        {
+            get
+            {
+                if (null == _processCancelCommand)
+                {
+                    _processCancelCommand = new DelegateCommand(ProcessCancelCommandExecute);
+                }
+                return _processCancelCommand;
+            }
+        }
+
         /// <summary>
         /// Represents the delegate for the <see cref="ProcessFinished"/> event, which is raised when the process operation has completed.
         /// </summary>
@@ -116,6 +132,8 @@ namespace ProgresssDialog.Wpf.ViewModel
             }
         }
 
+        protected CancellationTokenSource? _cancellationTokenSource = null;
+
         /// <summary>
         /// Updates the <see cref="Progress"/> property based on the current values of <see cref="Numerator"/> and <see cref="Denominator"/>.
         /// If the denominator is zero, sets the progress to 0 to avoid division by zero.
@@ -131,7 +149,6 @@ namespace ProgresssDialog.Wpf.ViewModel
             {
                 Progress = 0;
             }
-
         }
 
         /// <summary>
@@ -163,25 +180,11 @@ namespace ProgresssDialog.Wpf.ViewModel
                 throw new InvalidOperationException(nameof(ProgressReporter));
             }
 
-            try
+            if (null == _cancellationTokenSource)
             {
-                var cancelTokenSource = new CancellationTokenSource();
-                AsyncTask?.RunAsync(ProgressReporter, cancelTokenSource.Token);
+                _cancellationTokenSource = new CancellationTokenSource();
             }
-            catch (OperationCanceledException)
-            {
-                var cancelMsg = Properties.Resources.IDS_ERR_MSB_TASK_CANCELED;
-                var cancelEventArg = new ProgressChangedEventArg()
-                {
-                    ProgressInfo = new()
-                    {
-                        ProcessName = cancelMsg,
-                        Denominator = Denominator,
-                        Numerator = Numerator
-                    }
-                };
-                OnProgressChanged(this, cancelEventArg);
-            }
+            AsyncTask?.RunAsync(ProgressReporter, _cancellationTokenSource.Token);
         }
 
         /// <summary>
@@ -193,6 +196,11 @@ namespace ProgresssDialog.Wpf.ViewModel
         public virtual void OnProgressFinished(object sender, EventArgs e)
         {
             ProcessFinished?.Invoke(this, e);
+        }
+
+        public void ProcessCancelCommandExecute()
+        {
+            _cancellationTokenSource?.Cancel();
         }
     }
 }
