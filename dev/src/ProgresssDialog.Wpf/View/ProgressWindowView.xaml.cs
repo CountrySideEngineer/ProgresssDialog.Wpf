@@ -18,6 +18,17 @@ namespace ProgresssDialog.Wpf.View
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ProgressWindowView"/> class.
+        /// </summary>
+        /// <param name="height">Window height.</param>
+        /// <param name="width">Window width.</param>
+        public ProgressWindowView(int height, int width)
+        {
+            Height = height;
+            Width = width;
+        }
+
+        /// <summary>
         /// Handles the DataContextChanged event of the window.
         /// Subscribes to the CloseRequested event of the <see cref="ProgressWindowViewModel"/> to close the window when requested.
         /// </summary>
