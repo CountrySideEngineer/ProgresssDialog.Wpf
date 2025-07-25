@@ -6,11 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="ProgresssDialog.Wpf">
-      <HintPath>..\..\..\dev\src\bin\ProgresssDialog.Wpf\Debug\net8.0-windows\ProgresssDialog.Wpf.dll</HintPath>
+      <HintPath>..\..\..\dev\src\bin\ProgresssDialog.Wpf\Release\net8.0-windows\ProgresssDialog.Wpf.dll</HintPath>
     </Reference>
   </ItemGroup>
 
