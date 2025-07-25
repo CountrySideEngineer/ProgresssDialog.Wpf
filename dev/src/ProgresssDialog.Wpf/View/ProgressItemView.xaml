@@ -20,11 +20,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="96"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="ProcessNameArea"
                    Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Stretch"
                    TextAlignment="Left"
@@ -35,12 +37,12 @@
         <Grid Grid.Row="1">
             <ProgressBar Grid.Row="0"
                          Grid.Column="0"
-                         Margin="16, 8, 4, 8"
+                         Margin="16, 8, 8, 8"
                          Value="{Binding Progress}"
                          />
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
-                       Margin="8"
+                       Margin="16, 8, 8, 8"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Stretch"
                        TextAlignment="Center"
@@ -51,7 +53,7 @@
                 x:Uid="1"
                 Grid.Column="1"
                 Grid.Row="1"
-                Margin="4, 8, 8, 8"
+                Margin="8, 8, 16, 8"
                 Padding="8"
                 Content="cancel"
                 Command="{Binding ProcessCancelCommand}"
