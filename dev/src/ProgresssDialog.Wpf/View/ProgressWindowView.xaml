@@ -12,7 +12,8 @@
         ContentRendered="Window_ContentRendered"
         WindowStartupLocation="CenterScreen"
         MaxHeight="600"
-        Height="120"
+        MinHeight="144"
+        Height="144"
         Width="600"
         >
     <Window.DataContext>
