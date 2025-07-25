@@ -25,7 +25,7 @@ namespace ProgresssDialog.Wpf.Sample.ViewModel
         public void ExecuteAsyncCommandExecute()
         {
             var command = new ProgressDialogExecuteCommand();
-            command.Execute(200, 300);
+            command.Execute();
         }
     }
 }
