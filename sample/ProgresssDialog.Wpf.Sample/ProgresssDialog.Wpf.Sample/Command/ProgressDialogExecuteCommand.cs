@@ -17,5 +17,14 @@ namespace ProgresssDialog.Wpf.Sample.Command
 
             return;
         }
+
+        public void Execute(int height, int width)
+        {
+            var task = new HeavyTask();
+            var progWindow = new ProgresssDialog.Wpf.ProgressWindow();
+            progWindow.Start(task, height, width);
+
+            return;
+        }
     }
 }
