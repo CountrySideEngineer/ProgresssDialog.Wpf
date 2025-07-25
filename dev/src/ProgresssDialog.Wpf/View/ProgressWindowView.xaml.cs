@@ -26,6 +26,8 @@ namespace ProgresssDialog.Wpf.View
         {
             Height = height;
             Width = width;
+
+            InitializeComponent();
         }
 
         /// <summary>
