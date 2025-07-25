@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="ProcessNameArea"
                    Grid.Row="0"
