@@ -42,5 +42,38 @@ namespace ProgresssDialog.Wpf
             progressWindow.ShowDialog();
         }
 
+        public virtual void Start(IAsyncTask<ProgressInfo> task, int height, int width)
+        {
+            var viewModel = new ProgressItemViewModel()
+            {
+                AsyncTask = task
+            };
+            var progressReporter = new Progress<ProgressInfo>((progressInfo) =>
+            {
+                var arg = new ProgressChangedEventArg()
+                {
+                    ProgressInfo = progressInfo
+                };
+                viewModel.OnProgressChanged(this, arg);
+
+                if (!progressInfo.ShouldContinue)
+                {
+                    viewModel.OnProgressFinished(this, EventArgs.Empty);
+                }
+
+            });
+            viewModel.ProgressReporter = progressReporter;
+            var windowViewModel = new ProgressWindowViewModel()
+            {
+                ItemContext = viewModel
+            };
+            viewModel.ProcessFinished += windowViewModel.ProgressItemProcessDone;
+
+            var progressWindow = new ProgressWindowView(height:height, width:width)
+            {
+                DataContext = windowViewModel
+            };
+            progressWindow.ShowDialog();
+        }
     }
 }
