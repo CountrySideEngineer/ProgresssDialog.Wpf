@@ -1,6 +1,7 @@
-# AsyncProgressDialog
+# ProgresssDialog.Wpf
 
-**AsyncProgressDialog** is a lightweight and reusable WPF component for displaying progress during long-running asynchronous operations.  
+
+**ProgresssDialog.Wpf** is a lightweight and reusable WPF component for displaying progress during long-running asynchronous operations.  
 It allows you to run any user-defined asynchronous task and provides a modal progress window with cancellation support and progress updates.
 
 ---
@@ -47,13 +48,5 @@ var window = new AsyncProgressDialog.ProgressWindow();
 window.Start(task);
 ```
 
---- 
-
-## Architecture
-This library follows the MVVM pattern:
-
-- ProgressWindow – the modal UI component
-- ProgressWindowViewModel – holds progress state and task logic
-- IAsyncTask<T> – interface for injecting user-defined asynchronous operations
-- ProgressInfo – progress data passed via IProgress<T>
-
+For more detailed implementation and source code, please refer to the sample program.  
+The sample program is stored [here](sample/).
