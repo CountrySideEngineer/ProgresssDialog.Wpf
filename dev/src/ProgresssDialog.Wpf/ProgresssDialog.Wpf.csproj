@@ -15,6 +15,10 @@
     <Version>0.2.1</Version>
     <Authors>CountrySideEngineer</Authors>
     <Company>CountrySideEngineer</Company>
+    <Copyright>CountrySideEngineer</Copyright>
+    <RepositoryUrl>https://github.com/CountrySideEngineer/ProgresssDialog.Wpf</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>wfp;ProgressWindow;ProgressBar;</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
