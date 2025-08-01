@@ -12,13 +12,15 @@
     <BaseOutputPath>..\bin\$(AssemblyName)</BaseOutputPath>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>0.2.1</Version>
+    <Version>0.2.2</Version>
     <Authors>CountrySideEngineer</Authors>
-    <Company>CountrySideEngineer</Company>
-    <Copyright>CountrySideEngineer</Copyright>
+    <Company>$(Authors)</Company>
+    <Copyright></Copyright>
     <RepositoryUrl>https://github.com/CountrySideEngineer/ProgresssDialog.Wpf</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>wfp;ProgressWindow;ProgressBar;</PackageTags>
+    <PackageTags>WPF;ProgressDialog;Async;MVVM;UI;Dialog;Cancellation</PackageTags>
+    <Description>A lightweight and customizable progress dialog library for WPF applications with cancellation support.</Description>
+    <PackageProjectUrl>https://github.com/CountrySideEngineer/ProgresssDialog.Wpf</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
